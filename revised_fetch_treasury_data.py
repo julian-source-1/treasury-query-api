@@ -12,7 +12,7 @@ if not os.path.exists(subdirectory):
 
 def get_treasury_data(year, field):
     base_url = "https://api.fiscaldata.treasury.gov/services/api/fiscal_service/"
-    endpoint = "v1/accounting/od/auctions_query"  
+    endpoint = "v1/accounting/od/auctions_query"  # Replace with the actual endpoint
     
     params = {
         "filter": f"issue_date:gte:{year}-01-01,issue_date:lte:{year}-12-31",
@@ -41,7 +41,7 @@ def collect_and_save_data(start_year, end_year, field):
     # Combine all data into a single DataFrame and save to CSV
     if all_data_frames:
         combined_df = pd.concat(all_data_frames, ignore_index=True)
-        combined_file_path = os.path.join(subdirectory, f"combined_treasury_data_{start_year}_to_{end_year}.csv")
+        combined_file_path = os.path.join(subdirectory, "combined_treasury_data.csv")
         combined_df.to_csv(combined_file_path, index=False)
         print(f"All data combined into {combined_file_path}")
 
